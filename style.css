@@ -46,3 +46,41 @@ button {
     width: fit-content;
     margin-top: 2%;
 }
+.hundred {
+    width: 100%;
+}
+@media (max-width:475px) {
+    body{
+        font-size: 15px;
+    }
+    span#name {
+        font-size: 25px;
+    }
+    div#pcbtn {
+        display: none;
+    }
+    div#mblbtn {
+        display: flex;
+    }
+    section#one {
+        text-align: center;
+    }
+    .row {
+        flex-direction: column;
+    }
+    main {
+        align-items: center;
+        justify-content: flex-start;
+    }
+    div#mblbtn {
+        margin-top: 10px;
+        align-items: center;
+    }
+    section#two {
+        width: 100%;
+        text-align: center;
+    }
+}
+.nodisp {
+    display: none;
+}

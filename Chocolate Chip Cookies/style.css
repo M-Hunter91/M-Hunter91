@@ -1,5 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 .text_align {
     text-align: center;
+}
+.roboto-slab-Text {
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.title-font {
+    font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.text_size {
+    font-size: 16px;
+}
+.white-text {
+    color: white;
+}
+.img {
+    height: 160px;
+    /* border: 1px solid blue; */
 }
 p {
     margin: 0;
@@ -7,13 +31,23 @@ p {
 
 body {
     margin: 0;
-    background-color: #FFF2E1;
-    font-family: 'Times New Roman', Times, serif inherit;
+    background-color: #a79277;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
 }
 header {
+    display: grid;
+    grid-template-columns:    [header-img-start] repeat(1, 6rem)
+    [header-img-end header-title-start] repeat(1, 102rem)
+    [header-title-end header-blank-start] repeat(1, 6rem)
+    [header-blank-end header-end]
+    1fr;
+    align-items: center;
     width: auto;
     height: 50px;
-    background-color: #EAD8C0;
+    background-color: #4e3629;
     align-content: center;
     font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
@@ -32,29 +66,108 @@ div#ingredients {
     height: 500px;
     margin-right: 10px;
     width: min-content;
-    justify-content: space-evenly;
+    border-right: 2px solid black;
 }
 div#instructions {
     width: 700px;
     height: 350px;
     margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    
 }
 input#Quantity {
     min-width: 20px;
-    width: 40px;
+    width: 20px;
+    
 }
 p#qty {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border: 2px solid #3bc3f7;
+    border-bottom: 2px solid black;
     margin-bottom: 10px;
 }
-img#img {
-    width: 150px;
-    margin-bottom: 10px;
-    margin-left: 500px;
+div#TOC {
+    background-color: #f2d283;
+    width: 300px;
+    height: 500px;
+    align-self: center;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+}
+div#imgs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #f2d283;
+    width: 300px;
+    height: 500px;
+    align-self: center;
+    margin-left: 50px;
+    align-items: center;
+}
+footer {
+    height: 250px;
+    /* border: 1px solid black; */
+    margin-top: auto;
+    display: flex;
+    background-color: #4e3629;
+    justify-content: center;
+}
+div#credits {
+    margin-top: auto;
+    
+}
+a#aika_cred {
+    text-decoration: none;
+    color: white;
+}
+
+div#mobile-container-1 {
+    display: none;
+}
+img {
+    height: 100%;
+}
+@media (max-width: 475px) {
+    .text_size {
+        font-size: 25px;
+    }
+    header {
+        font-size: 30px;
+        height: 75px;
+        grid-template-columns:    [header-img-start] repeat(1, 1rem)
+    [header-img-end header-title-start] repeat(1, 25rem)
+    [header-title-end header-blank-start] repeat(1, 1rem)
+    [header-blank-end header-end];
+    }
+    body {
+        max-width: 100svw;
+        max-height: 100svh;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    div#ingredients {
+        width: 70%;
+        /* margin-top: 10px; */
+        border: 2px solid black;
+    }
+    div#instructions {
+        width: 300px;
+        height: min-content;
+    }
+    div#TOC, div#instructions, div#imgs, div#ingredients {
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+    footer {
+        min-height: 200px;
+        margin-top: 50px;
+    }
 }

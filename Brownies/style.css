@@ -108,7 +108,6 @@ div#imgs {
     height: 500px;
     align-self: center;
     margin-left: 50px;
-    align-items: center;
 }
 footer {
     height: 250px;
@@ -130,14 +129,7 @@ a#aika_cred {
 div#mobile-container-1 {
     display: none;
 }
-img {
-    height: 100%;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+
 @media (max-width: 475px) {
     .text_size {
         font-size: 25px;
@@ -168,7 +160,6 @@ input::-webkit-inner-spin-button {
     }
     div#instructions {
         width: 300px;
-        height: min-content;
     }
     div#TOC, div#instructions, div#imgs, div#ingredients {
         margin-right: 0px;

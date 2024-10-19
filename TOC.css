@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+.text_align {
+    text-align: center;
+}
+.roboto-slab-Text {
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.text_size {
+    font-size: 16px;
+}
+.TOC_Links {
+    color: black;
+    text-decoration: none;
+}

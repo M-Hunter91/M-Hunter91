@@ -15,6 +15,11 @@
   font-weight: 400;
   font-style: normal;
 }
+iframe#TableOfContents {
+    width: 500px;
+    height: 450px;
+    
+}
 body {
     margin: 0;
     background-color: #a79277;
@@ -50,7 +55,7 @@ div#Title {
 div#Recipies {
     display: grid;
     row-gap: 10px;
-    text-align: center;
+    justify-content: center;
     padding-top: 10px;
 }
 a {

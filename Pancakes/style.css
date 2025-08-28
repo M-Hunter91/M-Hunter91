@@ -22,7 +22,10 @@
     color: white;
 }
 .img {
-    height: 160px;
+    height: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* border: 1px solid blue; */
 }
 .TOC_Links {
@@ -111,6 +114,9 @@ div#imgs {
     height: 500px;
     align-self: center;
     margin-left: 50px;
+}
+img {
+    height: 95%;
 }
 footer {
     height: 250px;

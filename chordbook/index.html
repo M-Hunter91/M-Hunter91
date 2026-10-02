@@ -39,13 +39,15 @@ summary .a{color:var(--mute);font-size:.9rem}
 .ch{display:flex;flex-wrap:wrap;gap:6px}
 .ch code{padding:3px 9px;border-radius:7px;border:1px solid var(--line);font:600 .95rem ui-monospace,Menlo,Consolas,monospace}
 #none{color:var(--mute);text-align:center;margin-top:30px}
-summary:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+select{display:block;width:100%;max-width:760px;margin:0 auto 8px;padding:9px 12px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px}
+summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 </style>
 </head>
 <body>
 <header>
   <div class="top"><h1>Chordbook</h1><small id="count"></small><a id="back" href="../index.html">Back to recipebook</a></div>
   <input id="q" type="search" placeholder="Search song or artist" aria-label="Search song or artist">
+  <select id="amp" aria-label="Same amp setup"></select>
   <div class="chips" id="chips"></div>
 </header>
 <main id="list"></main>
@@ -87,7 +89,41 @@ summary:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid
 {"t":"Counting Stars","a":"OneRepublic","type":"Bright Folk-Pop Strumming","style":"Strumming","capo":"4th fret","key":"Am (shapes; sounds C#m with capo)","chords":"Am, C, G, F, D","pick":"Position 4 (Neck + Middle) for bright, open folk-pop strumming.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7","bass":"5–6"},
 {"t":"Grenade","a":"Bruno Mars","type":"Moody Pop Ballad Strumming","style":"Strumming","capo":"5th fret","chords":"Am, Em, F, E, C, G","pick":"Position 5 (Neck single-coil) for a dark, warm ballad tone, or Position 4 for a bit more clarity.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6","bass":"6–7"},
 {"t":"Atlantis","a":"Seafret","type":"Emotive Folk-Pop Strumming","style":"Strumming","capo":"4th fret","key":"G#m","chords":"C, D, Em, Am, G, E","pick":"Position 4 (Neck + Middle) for clear, emotive folk-pop strumming, or Position 5 for a softer feel.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"5–6"},
-{"t":"Beautiful Now","a":"Zedd","type":"Bright Electro-Pop Strumming","style":"Strumming","capo":"2nd fret","chords":"Am, G, Dm, Em, F, C","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, shimmering electro-pop chime.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"}
+{"t":"Beautiful Now","a":"Zedd","type":"Bright Electro-Pop Strumming","style":"Strumming","capo":"2nd fret","chords":"Am, G, Dm, Em, F, C","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, shimmering electro-pop chime.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Another Place","a":"Bastille","type":"Atmospheric Indie-Pop Strumming","style":"Strumming","capo":"1st fret","key":"Fm","chords":"Em, C, D, G","pick":"Position 4 (Neck + Middle) for a clear, bright clean tone, or Position 2 for a bit more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Bad Blood","a":"Bastille","type":"Driving Indie-Pop Strumming","style":"Strumming","capo":"1st fret","chords":"Em, D, C","pick":"Position 4 (Neck + Middle) for clean, driving indie-pop chords, or Position 2 for more bite.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Bad Decisions","a":"Bastille","type":"Bright Indie-Pop Strumming","style":"Strumming","capo":"1st fret","chords":"C, Am, F, G","pick":"Position 4 (Neck + Middle) for a clear, bright clean tone, or Position 2 for a bit more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Boulevard Of Broken Dreams","a":"Green Day","type":"Mellow Pop-Punk Strumming","style":"Strumming","capo":"None","chords":"Em, G, D, A, C, B7","pick":"Position 5 (Neck single-coil) or Position 4 for clean, moody strummed chords.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Campus","a":"Vampire Weekend","type":"Bright Jangly Indie Strumming","style":"Strumming","capo":"None","key":"G","chords":"G, Am, D, Am/C, C","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, jangly indie-pop chime.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Capsize","a":"Frenship","type":"Emotive Pop Strumming","style":"Strumming","capo":"3rd fret","key":"Am","chords":"Am, F, C, Em, G","pick":"Position 4 (Neck + Middle) for clear, emotive pop strumming, or Position 5 for a softer feel.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"5–6"},
+{"t":"Changes","a":"Empire of the Sun","type":"Dreamy Synth-Pop Strumming","style":"Strumming","capo":"None","key":"Am","chords":"Am, G, F, FM7, Em7, Dm7, Em, G/B","pick":"Position 4 (Neck + Middle) for a glassy, dreamy synth-pop tone, or Position 5 for a warmer feel.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Divide","a":"Bastille","type":"Atmospheric Indie-Pop Strumming","style":"Strumming","capo":"1st fret","key":"Db","chords":"Am, G, C, F, Dm","pick":"Position 4 (Neck + Middle) for a clear, bright clean tone, or Position 2 for a bit more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Drugs You Should Try It","a":"Travis Scott","type":"Dark Moody Strumming","style":"Strumming","capo":"4th fret","chords":"Am, Fmaj7, E7","pick":"Position 5 (Neck single-coil) for a warm, dark, moody tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Durban Skies","a":"Bastille","type":"Upbeat Indie-Pop Strumming","style":"Strumming","capo":"None","chords":"G, Em, C, D","pick":"Position 4 (Neck + Middle) for a clear, bright clean tone, or Position 2 for a bit more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Easier","a":"5 Seconds Of Summer","type":"Clean Pop-Rock Strumming","style":"Strumming","capo":"2nd fret","key":"F","chords":"Em, G, D, C, Am, Cm","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Fiction","a":"The xx","type":"Dark Minimal Clean Strumming","style":"Strumming","capo":"3rd fret","chords":"Em, G, C","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"5–6","bass":"6–7"},
+{"t":"Fire","a":"Barns Courtney","type":"Driving Folk-Rock Strumming","style":"Strumming","capo":"1st fret","chords":"Em, G, A, C","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"5–6"},
+{"t":"Flaws","a":"Bastille","type":"Acoustic-Style Indie Strumming","style":"Strumming","capo":"1st or 2nd fret","chords":"C, G, Em, D","cnote":"capo 1 or 2, whichever suits your voice (the chord chart used 6)","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Four Walls (The Ballad Of Perry Smith)","a":"Bastille","type":"Slow Atmospheric Strumming","style":"Strumming","capo":"None","chords":"C, Em, D, Bm, G","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Give Me The Future","a":"Bastille","type":"Bright Indie-Pop Strumming","style":"Strumming","capo":"None","chords":"Em, Am, C, D","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Glitter And Gold","a":"Barns Courtney","type":"Folk-Rock Strumming","style":"Strumming","capo":"1st fret","chords":"Dm, C, G","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"5–6"},
+{"t":"Good Things Fall Apart","a":"Illenium","type":"Emotive Pop Strumming","style":"Strumming","capo":"None","key":"D","chords":"D, G, A","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Good Grief","a":"Bastille","type":"Upbeat Indie-Pop Strumming","style":"Strumming","capo":"1st fret","chords":"G, F, C, Em, D","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Haunt","a":"Bastille","type":"Moody Indie-Pop Strumming","style":"Strumming","capo":"2nd fret","chords":"D, C, G, Am, Em","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Havana","a":"Camila Cabello","type":"Clean Latin-Pop Strumming","style":"Strumming","capo":"3rd fret","key":"Gm","chords":"Em, C, B7","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy single-coil tone.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"7–8","bass":"4–5"},
+{"t":"Here","a":"Alessia Cara","type":"Mellow R&B-Pop Strumming","style":"Strumming","capo":"4th fret","chords":"Am, Dm, Em","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Hold On, We're Going Home","a":"Drake","type":"Smooth Dreamy Strumming","style":"Strumming","capo":"4th fret","chords":"G, F, D, C","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Hotel California","a":"Eagles","type":"Clean Classic-Rock Strumming","style":"Strumming","capo":"2nd fret","key":"Bm","chords":"Am, E7, G, D, F, C, Dm","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Hummingbird","a":"Metro Boomin","type":"Dark Moody Strumming","style":"Strumming","capo":"6th fret","key":"F#","chords":"C, F, Am, Dm, G, Em","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"5–6","bass":"6–7"},
+{"t":"I Love It","a":"Icona Pop","type":"Bright Upbeat Pop Strumming","style":"Strumming","capo":"1st fret","chords":"G, C, Am, Bb","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"8","bass":"5–6"},
+{"t":"Youth","a":"Troye Sivan","type":"Clean Pop Strumming","style":"Strumming","capo":"None","key":"G","chords":"G, D, Em, C, Am","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Youngblood","a":"5 Seconds Of Summer","type":"Clean Pop-Rock Strumming","style":"Strumming","capo":"3rd fret","key":"Gm","chords":"Em, D, G, C","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Young Dumb And Broke","a":"Khalid","type":"Chill R&B Strumming","style":"Strumming","capo":"1st fret","key":"F","chords":"F, Dm, C","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Yellow","a":"Coldplay","type":"Shimmery Clean Strumming","style":"Strumming","capo":"4th fret","key":"G","chords":"G, D, C, Cmaj7, Gsus4, Em7, Dm7","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"World Gone Mad","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"2nd fret","chords":"C, G/B, Em, D, G","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Why'd You Only Call Me When You're High","a":"Arctic Monkeys","type":"Moody Bluesy Strumming","style":"Strumming","capo":"None","key":"Em","chords":"Em, C, Am, B","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Way Beyond","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"4th fret","chords":"Em, C, Am, D, G","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Waves","a":"Dean Lewis","type":"Emotive Pop Strumming","style":"Strumming","capo":"None","key":"D","chords":"G, Bm, D, A, Em","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"}
 ]
 </script>
 
@@ -99,6 +135,11 @@ S.sort((a,b)=>sk(a)<sk(b)?-1:1);
 const dial=(l,v)=>{const n=(v.match(/\d+/g)||[]).map(Number),m=n.length?n.reduce((a,b)=>a+b)/n.length:null;
   return `<div class="d${m==null?' na':''}"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15"/><line x1="20" y1="20" x2="20" y2="9" transform="rotate(${m==null?0:-135+m*27} 20 20)"/></svg><b>${esc(v)}</b>${l}</div>`};
 const FILTERS=[['All',()=>1],['Clean',s=>s.od==='OFF'],['Overdrive',s=>/ON/.test(s.od)],['Capo',s=>s.capo!=='None'],['No capo',s=>s.capo==='None'],['Picking',s=>/Picking/.test(s.style)]];
+const ak=s=>[s.od,s.gain,s.tre,s.bass].join('|');
+const G={};S.forEach(s=>(G[ak(s)]=G[ak(s)]||[]).push(s));
+const amp=document.getElementById('amp');
+amp.innerHTML='<option value="">Any amp setup</option>'+Object.entries(G).filter(e=>e[1].length>1).sort((a,b)=>b[1].length-a[1].length).map(([k,v])=>{const s=v[0];
+  return `<option value="${esc(k)}">${esc((s.od==='OFF'?'Clean':'OD '+s.od+' · Gain '+s.gain)+' · Treble '+s.tre+' · Bass '+s.bass)} (${v.length} songs)</option>`}).join('');
 let cur=0;
 const list=document.getElementById('list');
 list.innerHTML=S.map(s=>{
@@ -111,12 +152,12 @@ list.innerHTML=S.map(s=>{
   ${ch?`<div class="ch">${ch}</div>`:''}</div></details>`}).join('');
 const cards=[...list.children];
 function apply(){const q=document.getElementById('q').value.trim().toLowerCase();let n=0;
-  S.forEach((s,i)=>{const ok=FILTERS[cur][1](s)&&(s.t+' '+s.a).toLowerCase().includes(q);cards[i].hidden=!ok;n+=ok});
+  S.forEach((s,i)=>{const ok=FILTERS[cur][1](s)&&(!amp.value||ak(s)===amp.value)&&(s.t+' '+s.a).toLowerCase().includes(q);cards[i].hidden=!ok;n+=ok});
   document.getElementById('count').textContent=n+' of '+S.length;document.getElementById('none').hidden=n>0}
 const chips=document.getElementById('chips');
 chips.innerHTML=FILTERS.map((f,i)=>`<button aria-pressed="${i==0}" data-i="${i}">${f[0]}</button>`).join('');
 chips.onclick=e=>{const b=e.target.closest('button');if(!b)return;cur=+b.dataset.i;[...chips.children].forEach(c=>c.setAttribute('aria-pressed',c===b));apply()};
-document.getElementById('q').oninput=apply;apply();
+document.getElementById('q').oninput=apply;amp.onchange=apply;apply();
 </script>
 </body>
 </html>

@@ -28,8 +28,13 @@ summary .a{color:var(--mute);font-size:.9rem}
 .tag{font-size:.75rem;padding:1px 8px;border-radius:99px;background:var(--accbg);color:var(--acc);white-space:nowrap}
 .tag.od{background:var(--acc);color:var(--bg);font-weight:600}
 .body{padding:2px 13px 14px;border-top:1px solid var(--line)}
-.pick{margin:10px 0}
-.dials{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0}
+.pick{margin:4px 0 6px}
+.dials{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}.dials .d{flex:0 0 calc(25% - 5px)}
+.gh{margin:16px 0 4px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:650}.body>.gh:first-child{margin-top:10px}
+.odl{margin:2px 0 4px;font-size:.92rem;color:var(--mute)}.odl b{color:var(--ink)}
+.al{list-style:none;margin:4px 0 0;padding:0;max-height:7.6rem;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.al li{padding:5px 10px;font-size:.92rem;border-top:1px solid var(--line)}.al li:first-child{border-top:0}
+.al a{color:var(--acc);font-weight:600;text-decoration:none}.al .a{font-size:.85rem}.al .nudge{float:right;font-size:.8rem;color:var(--mute)}
 .d{text-align:center;font-size:.8rem;color:var(--mute)}
 .d b{display:block;color:var(--ink);font-size:.85rem;line-height:1.2}
 .d svg{width:42px;height:42px;fill:none;stroke:var(--acc);stroke-width:2.2;stroke-linecap:round}
@@ -40,7 +45,7 @@ summary .a{color:var(--mute);font-size:.9rem}
 .ch code{padding:3px 9px;border-radius:7px;border:1px solid var(--line);font:600 .95rem ui-monospace,Menlo,Consolas,monospace}
 #none{color:var(--mute);text-align:center;margin-top:30px}
 select{display:block;width:100%;max-width:760px;margin:0 auto 8px;padding:9px 12px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px}
-summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -53,7 +58,7 @@ summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visi
 <main id="list"></main>
 <p id="none" hidden>No songs match.</p>
 
-<!-- SONG DATA: edit/add entries here only. One song per line. -->
+<!-- SONG DATA: edit/add entries here only. One song per line. vol/tone = guitar knobs; gain/tre/bass and optional avol = amp knobs. -->
 <script type="application/json" id="songs">
 [
 {"t":"505","a":"Arctic Monkeys","type":"Strumming / Chords","style":"Strumming","capo":"None","chords":"Dm, Em, E","pick":"Position 4 (Neck + Middle single-coils) or Position 5 (Neck single-coil) for a warm, clean tone.","vol":"8–10","tone":"6–8","od":"OFF","gain":"N/A","tre":"5–6","bass":"6–7"},
@@ -73,7 +78,7 @@ summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visi
 {"t":"My Old Ways","a":"Tame Impala","type":"Glassy Psych-Pop Synth Guitar","style":"Strumming","capo":"None","chords":"Bbm","pick":"Position 4 (Neck + Middle) for glassy psych-pop single-coil sheen.","vol":"8–10","tone":"6–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
 {"t":"Heavy","a":"Linkin Park","type":"Dynamic Pop-Rock Strumming","style":"Strumming","capo":"2nd fret","chords":"Em, G, D, C","pick":"Position 5 (Neck) for clean verse chords, or Position 1 (Bridge Humbucker) for punchy rock chorus strumming.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
 {"t":"Ocean Drive","a":"Duke Dumont","type":"80s Synth-Wave Funk Groove","style":"Strumming","capo":"None","chords":"Am, G, F, Dm, Dm7, Dm6","pick":"Position 2 or 4 for tight, crisp 80s single-coil funk groove.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"8","bass":"5–6"},
-{"t":"Stitches","a":"Shawn Mendes","type":"Driving Acoustic Pop Strumming","style":"Strumming","capo":"1st fret","chords":"Am, G, C, F","pick":"Position 4 (Neck + Middle) for driving acoustic-style pop strumming.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Stitches","a":"Shawn Mendes","type":"Driving Acoustic Pop Strumming","style":"Strumming","capo":"1st fret","key":"Bbm","chords":"Am, G, C, F","pick":"Position 4 (Neck + Middle) for driving acoustic-style pop strumming.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
 {"t":"Toxicity","a":"System Of A Down","type":"Heavy Alt-Metal Strumming","style":"Strumming","capo":"3rd fret","chords":"Am, C, F, E","pick":"Position 1 (Bridge Humbucker) for massive, aggressive alt-metal crunch.","vol":"10","tone":"7–8","od":"ON","gain":"7–8","tre":"6–7","bass":"8–9"},
 {"t":"Jane","a":"The Long Faces","type":"Lead / Tab Riffing","style":"Picking (tab / lead)","capo":"None","key":"C#m","tempo":"147 BPM","pick":"Position 4 (Neck + Middle) for clean, articulate indie-rock single-coil lead picking.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6","fmt":"Tab / Lead (Key: C#m, Tempo: 147 BPM)"},
 {"t":"Lost In Japan","a":"Shawn Mendes","type":"Groove / Funk Strumming","style":"Strumming","capo":"3rd fret","chords":"G, Am, Bm, Em, C","pick":"Position 2 or 4 for a classic Strat funk-pop rhythm quack.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
@@ -123,7 +128,43 @@ summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visi
 {"t":"World Gone Mad","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"2nd fret","chords":"C, G/B, Em, D, G","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
 {"t":"Why'd You Only Call Me When You're High","a":"Arctic Monkeys","type":"Moody Bluesy Strumming","style":"Strumming","capo":"None","key":"Em","chords":"Em, C, Am, B","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
 {"t":"Way Beyond","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"4th fret","chords":"Em, C, Am, D, G","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
-{"t":"Waves","a":"Dean Lewis","type":"Emotive Pop Strumming","style":"Strumming","capo":"None","key":"D","chords":"G, Bm, D, A, Em","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"}
+{"t":"Waves","a":"Dean Lewis","type":"Emotive Pop Strumming","style":"Strumming","capo":"None","key":"D","chords":"G, Bm, D, A, Em","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Kicks","a":"Barns Courtney","type":"Driving Folk-Rock Strumming","style":"Strumming","capo":"4th fret","chords":"Am, Dm, C, E","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"5–6"},
+{"t":"Laura Palmer","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"1st fret","chords":"Em, D, C, G","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Love Me Again","a":"John Newman","type":"Soulful Pop Strumming","style":"Strumming","capo":"3rd fret","chords":"Em, G, Bm, A","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Me And My Broken Heart","a":"Rixton","type":"Bright Upbeat Pop Strumming","style":"Strumming","capo":"3rd fret","chords":"Am, Dm, G, C, Em","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"8","bass":"5–6"},
+{"t":"Mine","a":"Bazzi","type":"Chill R&B-Pop Strumming","style":"Strumming","capo":"3rd fret","chords":"Am, G, Em, C","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Monster","a":"Imagine Dragons","type":"Dark Moody Strumming","style":"Strumming","capo":"1st fret","chords":"Em, G, D, A","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"9–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Mr. Saxobeat","a":"Alexandra Stan","type":"Bright Dance-Pop Strumming","style":"Strumming","capo":"2nd fret","chords":"Am, Dm7, Em","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"8","bass":"5–6"},
+{"t":"New Divide","a":"Linkin Park","type":"Dynamic Alt-Rock Strumming","style":"Strumming","capo":"1st fret","chords":"Em, G, D, A, C, Dsus4","pick":"Position 5 (Neck single-coil) for clean verses, then Position 1 (Bridge Humbucker) for the heavy chorus.","vol":"9–10","tone":"7–8","od":"OFF for verses, ON for chorus","gain":"Verses: N/A · Chorus: 3–4","tre":"6–7","bass":"6–7"},
+{"t":"Numb","a":"Linkin Park","type":"Heavy Alt-Rock Strumming","style":"Strumming","capo":"2nd fret","key":"F#m","chords":"Em, C, G, D, Bm, B","pick":"Position 1 (Bridge Humbucker) for a thick, driving alt-rock crunch.","vol":"10","tone":"7–8","od":"ON","gain":"6–7","tre":"6–7","bass":"7–8"},
+{"t":"Of The Night","a":"Bastille","type":"Upbeat Indie-Pop Strumming","style":"Strumming","capo":"1st fret","chords":"C, G, D, Am","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"One More Night","a":"Maroon 5","type":"Clean Pop-Funk Strumming","style":"Strumming","capo":"1st fret","chords":"Em, D, Am","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"7–8","bass":"4–5"},
+{"t":"Only 1","a":"Metro Boomin & Travis Scott","type":"Dark Moody Strumming","style":"Strumming","capo":"3rd fret","key":"C#m","chords":"Am, E, C, Dm, D, G","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"5–6","od":"OFF","gain":"N/A","tre":"5–6","bass":"6–7"},
+{"t":"Overjoyed","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"None","chords":"Am, G, F, C","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Papercut","a":"Zedd","type":"Clean Pop Strumming","style":"Strumming","capo":"1st fret","chords":"Em, A, C, Bm, G","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Payphone","a":"Maroon 5","type":"Bright Upbeat Pop Strumming","style":"Strumming","capo":"4th fret","key":"B","chords":"C, G, Em, D","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"8","bass":"5–6"},
+{"t":"Quarter Past Midnight","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"1st fret","key":"Ab","chords":"G, C, D, Em","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Radioactive","a":"Imagine Dragons","type":"Dark Moody Strumming","style":"Strumming","capo":"2nd fret","key":"Bm","chords":"Am, C, G, D, Cmaj7","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"9–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Reflections","a":"The Neighbourhood","type":"Moody Indie Strumming","style":"Strumming","capo":"None","key":"Bm","chords":"Bm, G, Em, F#, A, D","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"5–6","bass":"6–7"},
+{"t":"Red Lights","a":"Tiësto","type":"Clean Dance-Pop Strumming","style":"Strumming","capo":"3rd fret","chords":"Em, C, G, D","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Say You Won't Let Go","a":"James Arthur","type":"Soft Acoustic-Style Strumming","style":"Strumming","capo":"3rd fret","key":"G","chords":"G, D, Em, C","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"6–7","bass":"5–6"},
+{"t":"She Doesn't Mind","a":"Sean Paul","type":"Bright Dance-Pop Strumming","style":"Strumming","capo":"4th fret","chords":"Am, C, G, D","pick":"Position 2 (Middle + Bridge split) or Position 4 for a bright, punchy clean tone.","vol":"9–10","tone":"8–9","od":"OFF","gain":"N/A","tre":"8","bass":"5–6"},
+{"t":"Smells Like Teen Spirit","a":"Nirvana","type":"Heavy Grunge Strumming","style":"Strumming","capo":"1st fret","key":"Fm","chords":"Em, A, G, C","pick":"Position 1 (Bridge Humbucker) for a thick, raw grunge crunch.","vol":"10","tone":"7–8","od":"ON","gain":"6–7","tre":"6–7","bass":"7–8"},
+{"t":"Smoke And Mirrors","a":"Gotye","type":"Clean Indie Strumming","style":"Strumming","capo":"1st fret","key":"Ebm","chords":"Dm, Am, G, Bb, C","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"So Cold","a":"Balu Brigade","type":"Mellow Pop Strumming","style":"Strumming","capo":"1st fret","chords":"Am, C, G, D","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"9–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Someone You Loved","a":"Lewis Capaldi","type":"Emotional Ballad Strumming","style":"Strumming","capo":"1st fret","key":"C#","chords":"C, G, Am, F, Dm, Dm7, Am7","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Something Just Like This","a":"The Chainsmokers","type":"Clean Pop Strumming","style":"Strumming","capo":"5th fret","key":"G","chords":"C, D, Em, G/B, Esus4, G, Gmaj7","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Sparks","a":"Coldplay","type":"Delicate Clean Strumming","style":"Strumming","capo":"1st fret","key":"Bbm","chords":"C, Am7, Fadd9/A, Am, Ammaj7, C7, Am6, Fmaj7/A","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"8–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"5–6"},
+{"t":"Stargazing","a":"Kygo","type":"Clean Tropical-Pop Strumming","style":"Strumming","capo":"2nd fret","chords":"Em, G, C, D, Bm","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Stole The Show","a":"Kygo","type":"Clean Tropical-Pop Strumming","style":"Strumming","capo":"4th fret","chords":"Em, C, Am, G, D","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Story Of My Life","a":"One Direction","type":"Clean Pop Strumming","style":"Strumming","capo":"3rd fret","key":"Eb","chords":"Am, C, F, G, Dm","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Icarus","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"None","chords":"Em, C, D, G, B7","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"IDFC","a":"Blackbear","type":"Chill Trap-Pop Strumming","style":"Strumming","capo":"2nd fret","chords":"Em, G, Bm, A","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"9–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Iridescent","a":"Linkin Park","type":"Moody Clean Strumming","style":"Strumming","capo":"None","key":"Am","chords":"Am, F, C, G, G/B","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"9–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"},
+{"t":"Japan","a":"Throttle","type":"Clean Pop Strumming","style":"Strumming","capo":"3rd fret","chords":"G, Am, C","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Joy","a":"Bastille","type":"Clean Indie-Pop Strumming","style":"Strumming","capo":"2nd fret","key":"A","chords":"G, C, Am7, D6/F#, D, Em","pick":"Position 4 (Neck + Middle) for a clear, full clean tone, or Position 2 for more sparkle.","vol":"9–10","tone":"7–8","od":"OFF","gain":"N/A","tre":"7–8","bass":"5–6"},
+{"t":"Just The Two Of Us","a":"Grover Washington Jr.","type":"Smooth Jazz-Funk Chord Strumming","style":"Strumming","capo":"1st fret","key":"Db","chords":"Cmaj7, B7, G7, Em7, Dm7, Ebm7, Bbmaj7, A7, Abmaj7, F13","pick":"Position 5 (Neck single-coil) or Position 4 for a warm, smooth clean tone.","vol":"9–10","tone":"6–7","od":"OFF","gain":"N/A","tre":"6–7","bass":"6–7"}
 ]
 </script>
 
@@ -131,25 +172,36 @@ summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visi
 const S=JSON.parse(document.getElementById('songs').textContent);
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const sk=s=>s.t.replace(/^(the|a)\s+/i,'').toLowerCase();
-S.sort((a,b)=>sk(a)<sk(b)?-1:1);
+S.sort((a,b)=>sk(a)<sk(b)?-1:1);S.forEach((s,i)=>s._i=i);
 const dial=(l,v)=>{const n=(v.match(/\d+/g)||[]).map(Number),m=n.length?n.reduce((a,b)=>a+b)/n.length:null;
   return `<div class="d${m==null?' na':''}"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15"/><line x1="20" y1="20" x2="20" y2="9" transform="rotate(${m==null?0:-135+m*27} 20 20)"/></svg><b>${esc(v)}</b>${l}</div>`};
 const FILTERS=[['All',()=>1],['Clean',s=>s.od==='OFF'],['Overdrive',s=>/ON/.test(s.od)],['Capo',s=>s.capo!=='None'],['No capo',s=>s.capo==='None'],['Picking',s=>/Picking/.test(s.style)]];
-const ak=s=>[s.od,s.gain,s.tre,s.bass].join('|');
+const ak=s=>[s.od,s.gain,s.avol||'',s.tre,s.bass].join('|');
+const num=v=>{const n=(String(v||'').match(/\d+/g)||[]).map(Number);return n.length?n.reduce((a,b)=>a+b)/n.length:null};
+const KN=[['gain','Gain'],['avol','Volume'],['tre','Treble'],['bass','Bass']];
+const near=(a,b)=>{if(a.od!==b.od)return null;let d=null;
+  for(const [k,l] of KN){const x=a[k]||'',y=b[k]||'';if(x===y)continue;const p=num(x),q=num(y);if(p==null||q==null||Math.abs(p-q)>1||d)return null;d=[l,y]}
+  return d};
+const also=s=>{const k=ak(s),ex=S.filter(o=>o!==s&&ak(o)===k),cl=S.map(o=>[o,o===s||ak(o)===k?null:near(s,o)]).filter(r=>r[1]);
+  const li=(o,n)=>`<li><a href="#" data-go="${o._i}">${esc(o.t)}</a> <span class="a">${esc(o.a)}</span>${n?`<span class="nudge">${esc(n[0])} → ${esc(n[1])}</span>`:''}</li>`;
+  return '<h3 class="gh">Also play · same amp setup</h3>'+(ex.length?`<ul class="al">${ex.map(o=>li(o)).join('')}</ul>`:'<p class="odl">No other songs share this exact amp setup.</p>')
+   +(cl.length?`<h3 class="gh">Or with one amp tweak</h3><ul class="al">${cl.map(r=>li(r[0],r[1])).join('')}</ul>`:'')};
 const G={};S.forEach(s=>(G[ak(s)]=G[ak(s)]||[]).push(s));
 const amp=document.getElementById('amp');
 amp.innerHTML='<option value="">Any amp setup</option>'+Object.entries(G).filter(e=>e[1].length>1).sort((a,b)=>b[1].length-a[1].length).map(([k,v])=>{const s=v[0];
-  return `<option value="${esc(k)}">${esc((s.od==='OFF'?'Clean':'OD '+s.od+' · Gain '+s.gain)+' · Treble '+s.tre+' · Bass '+s.bass)} (${v.length} songs)</option>`}).join('');
+  return `<option value="${esc(k)}">${esc((s.od==='OFF'?'Clean':'OD '+s.od+' · Gain '+s.gain)+(s.avol?' · Vol '+s.avol:'')+' · Treble '+s.tre+' · Bass '+s.bass)} (${v.length} songs)</option>`}).join('');
 let cur=0;
 const list=document.getElementById('list');
 list.innerHTML=S.map(s=>{
-  const od=/ON/.test(s.od),meta=[['Style',s.style],['Tuning','Standard (E A D G B E)'],['Capo',s.capo],['Key',s.key],['Tempo',s.tempo],['Overdrive',s.od]].filter(r=>r[1]);
+  const od=/ON/.test(s.od),meta=[['Style',s.style],['Tuning','Standard (E A D G B E)'],['Capo',s.capo],['Key',s.key],['Tempo',s.tempo]].filter(r=>r[1]);
   const ch=s.chords?s.chords.split(', ').map(c=>`<code>${esc(c)}</code>`).join('')+(s.cnote?` <span class="a">${esc(s.cnote)}</span>`:''):'';
   return `<details><summary><span class="n">${esc(s.t)}</span><span class="a">${esc(s.a)}</span><span class="tags">${s.capo!=='None'?`<span class="tag">Capo ${esc(s.capo.replace(/ fret/,''))}</span>`:''}${od?'<span class="tag od">OD</span>':''}</span></summary>
-  <div class="body"><p class="pick">${esc(s.pick)}</p>
-  <div class="dials">${dial('Volume',s.vol)}${dial('Tone',s.tone)}${dial('Gain',s.gain)}${dial('Treble',s.tre)}${dial('Bass',s.bass)}</div>
+  <div class="body"><h3 class="gh">Guitar</h3><p class="pick">${esc(s.pick)}</p>
+  <div class="dials">${dial('Volume',s.vol)}${dial('Tone',s.tone)}</div>
+  <h3 class="gh">Amp</h3><p class="odl">Overdrive <b>${esc(s.od)}</b></p>
+  <div class="dials">${dial('Gain',s.gain)}${s.avol?dial('Volume',s.avol):''}${dial('Treble',s.tre)}${dial('Bass',s.bass)}</div>
   <dl class="meta">${meta.map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
-  ${ch?`<div class="ch">${ch}</div>`:''}</div></details>`}).join('');
+  ${ch?`<div class="ch">${ch}</div>`:''}${also(s)}</div></details>`}).join('');
 const cards=[...list.children];
 function apply(){const q=document.getElementById('q').value.trim().toLowerCase();let n=0;
   S.forEach((s,i)=>{const ok=FILTERS[cur][1](s)&&(!amp.value||ak(s)===amp.value)&&(s.t+' '+s.a).toLowerCase().includes(q);cards[i].hidden=!ok;n+=ok});
@@ -158,6 +210,9 @@ const chips=document.getElementById('chips');
 chips.innerHTML=FILTERS.map((f,i)=>`<button aria-pressed="${i==0}" data-i="${i}">${f[0]}</button>`).join('');
 chips.onclick=e=>{const b=e.target.closest('button');if(!b)return;cur=+b.dataset.i;[...chips.children].forEach(c=>c.setAttribute('aria-pressed',c===b));apply()};
 document.getElementById('q').oninput=apply;amp.onchange=apply;apply();
+list.onclick=e=>{const a=e.target.closest('a[data-go]');if(!a)return;e.preventDefault();const c=cards[+a.dataset.go];
+  if(c.hidden){document.getElementById('q').value='';amp.value='';cur=0;[...chips.children].forEach((b,j)=>b.setAttribute('aria-pressed',j==0));apply()}
+  c.open=true;c.style.scrollMarginTop=document.querySelector('header').offsetHeight+8+'px';c.scrollIntoView({behavior:'smooth',block:'start'})};
 </script>
 </body>
 </html>

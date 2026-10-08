@@ -5,28 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chordbook</title>
 <style>
-:root{--bg:#f2f5f7;--card:#fff;--ink:#16222c;--mute:#5d6b77;--line:#d7dfe5;--acc:#17708f;--accbg:#e1f0f5}
-@media(prefers-color-scheme:dark){:root{--bg:#10181e;--card:#17222a;--ink:#e6edf1;--mute:#93a3ae;--line:#26343e;--acc:#6cc0dc;--accbg:#1b3440}}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Oswald:wght@200..700&display=swap');
+:root{--bg:#a79277;--card:#d1bb9e;--ink:#1c140b;--mute:#5a4630;--line:#b59c7c;--acc:#5b4429;--accbg:#e3d2b8;--head:#705637;--cream:#f6ecdc}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Avenir Next","Segoe UI",system-ui,sans-serif}
-header{position:sticky;top:0;z-index:2;background:var(--bg);padding:12px 14px 8px;border-bottom:1px solid var(--line)}
-.top{display:flex;align-items:baseline;gap:12px;max-width:760px;margin:0 auto}
-h1{margin:0;font-size:1.35rem;letter-spacing:-.01em}
-.top a{margin-left:auto;color:var(--acc);font-size:.9rem}.top a+a{margin-left:0}
-.top small{color:var(--mute)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Roboto Slab",Georgia,serif}
+header{position:sticky;top:0;z-index:2;background:var(--head);color:var(--cream);padding:12px 14px 8px;box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;max-width:760px;margin:0 auto}.top a,.top small{white-space:nowrap}
+h1{margin:0;font:400 1.6rem Oswald,Impact,sans-serif}
+.top a{margin-left:auto;color:var(--cream);font-size:.9rem}.top a+a{margin-left:0}
+.top small{color:#d9c8ab}
 input{display:block;width:100%;max-width:760px;margin:10px auto 8px;padding:10px 12px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;max-width:760px;margin:0 auto}
 .chips button{font:inherit;font-size:.85rem;padding:4px 11px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
-.chips button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--bg);font-weight:600}
+.chips button[aria-pressed=true]{background:var(--cream);border-color:var(--cream);color:var(--ink);font-weight:600}
 main{max-width:760px;margin:0 auto;padding:10px 14px 40px}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:6px;margin:8px 0;box-shadow:0 3px 8px rgba(0,0,0,.2)}
 summary{display:flex;align-items:center;gap:8px;padding:11px 13px;cursor:pointer;list-style:none}
 summary::-webkit-details-marker{display:none}
 summary .n{font-weight:650}
 summary .a{color:var(--mute);font-size:.9rem}
 .tags{margin-left:auto;display:flex;gap:5px;flex-shrink:0}
 .tag{font-size:.75rem;padding:1px 8px;border-radius:99px;background:var(--accbg);color:var(--acc);white-space:nowrap}
-.tag.od{background:var(--acc);color:var(--bg);font-weight:600}
+.tag.od{background:var(--acc);color:var(--cream);font-weight:600}
 .body{padding:2px 13px 14px;border-top:1px solid var(--line)}
 .pick{margin:4px 0 6px}
 .dials{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}.dials .d{flex:0 0 calc(25% - 5px)}

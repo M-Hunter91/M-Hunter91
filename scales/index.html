@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guitar and bass reference</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1f1f1c;--mute:#6b6a64;--line:#d9d6cc;--card:#f1eee6;--dot:#534AB7;--root:#D85A30;--band:#7F77DD}
+@media (prefers-color-scheme:dark){:root{--bg:#1a1a18;--fg:#eceae2;--mute:#9a988f;--line:#3a3935;--card:#242421;--dot:#7F77DD;--root:#E8774F;--band:#AFA9EC}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px 32px}
+h1{font-size:20px;font-weight:500;margin:0 0 14px}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 12px}
+select,button{font:inherit;font-size:15px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer}
+button.on{background:var(--card);border-color:var(--mute);font-weight:500}
+select:focus-visible,button:focus-visible{outline:2px solid var(--dot);outline-offset:2px}
+#info,#ninfo{font-size:14px;color:var(--mute);margin:0 0 8px;min-height:21px}
+.board{background:var(--card);border-radius:12px;padding:8px;overflow-x:auto}
+svg{display:block;min-width:620px;width:100%;height:auto}
+.note{font-size:13px;color:var(--mute);margin:8px 0 0}
+.links{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin:0 0 10px}
+.links a{color:var(--dot)}
+details.sec{border:1px solid var(--line);border-radius:12px;margin:0 0 14px;background:var(--bg)}
+details.sec>summary{cursor:pointer;padding:12px 14px;font-size:17px;font-weight:500;list-style:none}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::before{content:"\25B8";display:inline-block;width:1.1em;color:var(--mute)}
+details.sec[open]>summary::before{content:"\25BE"}
+details.sec>summary:focus-visible{outline:2px solid var(--dot);outline-offset:2px;border-radius:12px}
+.inner{padding:0 14px 14px}
+.tips{font-size:14px;color:var(--mute);margin:12px 0 0}
+.tips b{color:var(--fg);font-weight:500}
+.tips ul{margin:6px 0 0;padding-left:20px}
+.tips li{margin:0 0 5px}
+</style>
+</head>
+<body>
+<main>
+<div class="links"><a id="back" href="../index.html">Back to recipebook</a><a href="../chordbook/index.html">Chordbook</a></div>
+<h1>Guitar and bass reference</h1>
+<details class="sec" id="sec-notes" open><summary>Notes on the fretboard</summary><div class="inner">
+<div class="row">
+<select id="ninst" aria-label="Instrument"><option value="guitar">Guitar</option><option value="bass">Bass</option></select>
+<select id="nacc" aria-label="Sharps or flats"><option value="sharp">Sharps (C#)</option><option value="flat">Flats (Db)</option></select>
+<select id="nshow" aria-label="Which notes"><option value="all">All notes</option><option value="nat">Natural notes only</option></select>
+<select id="nhi" aria-label="Highlight a note"></select>
+</div>
+<div id="ninfo"></div>
+<div class="board"><svg id="nfb" role="img" aria-label="Notes on the fretboard"></svg></div>
+<p class="note">Filled dots are natural notes (A to G). Hollow dots are sharps or flats. Fret 0 is the open string. Top string is the highest, bottom is low E.</p>
+<div class="tips"><b>How to figure it out</b><ul>
+<li>The musical alphabet is A B C D E F G, then it starts again. Most letters have a sharp after them: A#, C#, D#, F#, G#. There is no sharp between B and C or between E and F, so those pairs are one fret apart.</li>
+<li>A flat is the same fret as a sharp, named from the note above: A# = Bb, C# = Db, D# = Eb, F# = Gb, G# = Ab. Same spot, two names.</li>
+<li>Going up a string, each fret is the next note in that sequence. Fret 12 is the open note again, one octave higher.</li>
+<li>Neighbouring strings are 5 frets apart: fret 5 on a string matches the open string above it. The exception is G to B, which is 4.</li>
+<li>Octave shape: from any note, go two strings up and two frets along. If that crosses the G to B gap, go three frets.</li>
+<li>Bass is the bottom four guitar strings (E A D G) an octave lower, so everything here applies to it too. Learn the low E and A strings first, since most roots live there.</li>
+</ul></div>
+</div></details>
+<details class="sec" id="sec-scales" open><summary>Scale patterns</summary><div class="inner">
+<div class="row">
+<select id="inst" aria-label="Instrument"><option value="guitar">Guitar</option><option value="bass">Bass</option></select>
+<select id="key" aria-label="Key"></select>
+<select id="scale" aria-label="Scale">
+<option value="major">Major</option>
+<option value="minor">Natural minor</option>
+<option value="majPent">Major pentatonic</option>
+<option value="minPent">Minor pentatonic</option>
+</select>
+<select id="lab" aria-label="Labels"><option value="deg">Show degrees</option><option value="note">Show note names</option></select>
+</div>
+<div id="pats" class="row"></div>
+<div id="info"></div>
+<div class="board"><svg id="fb" role="img" aria-label="Fretboard"></svg></div>
+<p class="note">Coral dots are the root. The shaded band is the pattern's fret range. Top string is the highest, bottom is low E.</p>
+<div class="tips"><b>How to figure it out</b><ul>
+<li>The five patterns are fixed shapes. They look the same in every key, and only their starting fret changes.</li>
+<li>Find your root on the low E string (the info line shows its fret). That decides where each pattern sits on the neck.</li>
+<li>Patterns 1 to 5 always come in the same order. Each one overlaps the next, so together they cover the whole neck, then pattern 1 repeats 12 frets higher.</li>
+<li>A minor scale shares its notes with the major scale whose root is 3 frets higher (A minor = C major). Minor pentatonic does the same with major pentatonic, so one set of shapes has two names.</li>
+<li>On bass the shapes are the same on its four strings.</li>
+</ul></div>
+</div></details>
+</main>
+<script>
+var N=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+var S={major:{iv:[0,2,4,5,7,9,11],dg:['1','2','3','4','5','6','7'],f:'M'},
+minor:{iv:[0,2,3,5,7,8,10],dg:['1','2','b3','4','5','b6','b7'],f:'m'},
+majPent:{iv:[0,2,4,7,9],dg:['1','2','3','5','6'],f:'M'},
+minPent:{iv:[0,3,5,7,10],dg:['1','b3','4','5','b7'],f:'m'}};
+var W={M:[[-3,0],[-1,2],[1,5],[4,7],[6,9]],m:[[-1,3],[2,5],[4,8],[7,10],[9,13]]};
+var INST={guitar:{open:[4,11,7,2,9,4],sy:26,r:10.5},bass:{open:[7,2,9,4],sy:34,r:11.5}};
+var MAXF=17,FW=36,NUT=44,Y0=24,pat=1;
+var $=function(id){return document.getElementById(id)};
+var ks=$('key'),pd=$('pats');
+N.forEach(function(n,i){var o=document.createElement('option');o.value=i;o.textContent=n;if(i===9)o.selected=true;ks.appendChild(o)});
+['All',1,2,3,4,5].forEach(function(p){var b=document.createElement('button');b.textContent=p==='All'?'All':'Pattern '+p;b.dataset.p=p;b.onclick=function(){pat=p;draw()};pd.appendChild(b)});
+function cx(f){return f===0?NUT-17:NUT+(f-0.5)*FW}
+function draw(){
+var I=INST[$('inst').value],n=I.open.length,sy=I.sy,root=+ks.value,sc=S[$('scale').value],lab=$('lab').value;
+var R=((root-4)%12+12)%12,win=null,bot=Y0+(n-1)*sy,H=bot+50;
+if(pat!=='All'){var w=W[sc.f][pat-1],lo=R+w[0],hi=R+w[1];while(lo<0){lo+=12;hi+=12}while(hi>MAXF&&lo-12>=0){lo-=12;hi-=12}win=[lo,hi]}
+Array.prototype.forEach.call(pd.children,function(b){b.className=String(b.dataset.p)===String(pat)?'on':''});
+$('info').textContent=N[root]+' '+$('scale').selectedOptions[0].textContent.toLowerCase()+', root on low E is fret '+R+(win?'. Pattern '+pat+' covers frets '+win[0]+' to '+win[1]+'.':'. All positions.');
+var s='';
+if(win){var x1=win[0]===0?NUT-30:NUT+(win[0]-1)*FW,x2=NUT+win[1]*FW;s+='<rect x="'+x1+'" y="6" width="'+(x2-x1)+'" height="'+(bot-Y0+36)+'" rx="6" fill="var(--band)" opacity="0.2"/>'}
+var my=Y0+(n-1)*sy/2,off=Math.min(sy/2,(n-1)*sy/4);
+[3,5,7,9,15,17].forEach(function(f){s+='<circle cx="'+cx(f)+'" cy="'+my+'" r="4" fill="var(--mute)" opacity="0.35"/>'});
+s+='<circle cx="'+cx(12)+'" cy="'+(my-off)+'" r="4" fill="var(--mute)" opacity="0.35"/><circle cx="'+cx(12)+'" cy="'+(my+off)+'" r="4" fill="var(--mute)" opacity="0.35"/>';
+for(var f=0;f<=MAXF;f++){var x=NUT+f*FW;s+='<line x1="'+x+'" y1="'+Y0+'" x2="'+x+'" y2="'+bot+'" stroke="var(--line)" stroke-width="'+(f===0?3:1)+'"/>'}
+for(var i=0;i<n;i++){var y=Y0+i*sy;s+='<line x1="'+(NUT-30)+'" y1="'+y+'" x2="'+(NUT+MAXF*FW)+'" y2="'+y+'" stroke="var(--mute)" stroke-width="'+(0.7+i*(n===4?0.7:0.25))+'"/>'}
+for(var i=0;i<n;i++){for(var f=0;f<=MAXF;f++){
+var pc=(I.open[i]+f)%12,k=sc.iv.indexOf(((pc-root)%12+12)%12);if(k<0)continue;
+var y=Y0+i*sy,inp=!win||(f>=win[0]&&f<=win[1]);
+s+='<circle cx="'+cx(f)+'" cy="'+y+'" r="'+I.r+'" fill="'+(k===0?'var(--root)':'var(--dot)')+'" opacity="'+(inp?1:0.18)+'"/>';
+if(inp)s+='<text x="'+cx(f)+'" y="'+(y+4)+'" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">'+(lab==='deg'?sc.dg[k]:N[pc])+'</text>'}}
+[3,5,7,9,12,15,17].forEach(function(f){s+='<text x="'+cx(f)+'" y="'+(bot+32)+'" text-anchor="middle" font-size="12" fill="var(--mute)">'+f+'</text>'});
+$('fb').setAttribute('viewBox','0 0 680 '+H);
+$('fb').innerHTML=s}
+['inst','key','scale','lab'].forEach(function(id){$(id).onchange=draw});
+draw();
+var FL=['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'],NAT=[0,2,4,5,7,9,11],nh=$('nhi');
+function nn(pc,a){return(a==='flat'?FL:N)[pc]}
+function fillHi(){var v=nh.value,a=$('nacc').value;nh.innerHTML='<option value="">Highlight a note</option>';for(var i=0;i<12;i++){var o=document.createElement('option');o.value=i;o.textContent=nn(i,a);nh.appendChild(o)}nh.value=v}
+function drawNotes(){
+var I=INST[$('ninst').value],n=I.open.length,sy=I.sy,a=$('nacc').value,nat=$('nshow').value==='nat',hi=nh.value===''?-1:+nh.value;
+var bot=Y0+(n-1)*sy,H=bot+50,s='',my=Y0+(n-1)*sy/2,off=Math.min(sy/2,(n-1)*sy/4);
+[3,5,7,9,15,17].forEach(function(f){s+='<circle cx="'+cx(f)+'" cy="'+my+'" r="4" fill="var(--mute)" opacity="0.35"/>'});
+s+='<circle cx="'+cx(12)+'" cy="'+(my-off)+'" r="4" fill="var(--mute)" opacity="0.35"/><circle cx="'+cx(12)+'" cy="'+(my+off)+'" r="4" fill="var(--mute)" opacity="0.35"/>';
+for(var f=0;f<=MAXF;f++){var x=NUT+f*FW;s+='<line x1="'+x+'" y1="'+Y0+'" x2="'+x+'" y2="'+bot+'" stroke="var(--line)" stroke-width="'+(f===0?3:1)+'"/>'}
+for(var i=0;i<n;i++){var y=Y0+i*sy;s+='<line x1="'+(NUT-30)+'" y1="'+y+'" x2="'+(NUT+MAXF*FW)+'" y2="'+y+'" stroke="var(--mute)" stroke-width="'+(0.7+i*(n===4?0.7:0.25))+'"/>'}
+for(var i=0;i<n;i++){for(var f=0;f<=MAXF;f++){
+var pc=(I.open[i]+f)%12,isN=NAT.indexOf(pc)>=0;if(nat&&!isN)continue;
+var y=Y0+i*sy,m=hi===pc,op=hi<0||m?1:0.18,fill,tx;
+if(m){fill='fill="var(--root)"';tx='#fff'}else if(isN){fill='fill="var(--dot)"';tx='#fff'}else{fill='fill="var(--card)" stroke="var(--dot)" stroke-width="2"';tx='var(--dot)'}
+s+='<circle cx="'+cx(f)+'" cy="'+y+'" r="'+I.r+'" '+fill+' opacity="'+op+'"/><text x="'+cx(f)+'" y="'+(y+4)+'" text-anchor="middle" font-size="11" font-weight="600" fill="'+tx+'" opacity="'+op+'">'+nn(pc,a)+'</text>'}}
+[3,5,7,9,12,15,17].forEach(function(f){s+='<text x="'+cx(f)+'" y="'+(bot+32)+'" text-anchor="middle" font-size="12" fill="var(--mute)">'+f+'</text>'});
+$('nfb').setAttribute('viewBox','0 0 680 '+H);$('nfb').innerHTML=s;
+$('ninfo').textContent=hi<0?'Open strings, low to high: '+I.open.slice().reverse().map(function(p){return nn(p,a)}).join(' ')+'.':'Every '+nn(hi,a)+' on the first 17 frets is highlighted.'}
+$('ninst').onchange=$('nshow').onchange=drawNotes;nh.onchange=drawNotes;$('nacc').onchange=function(){fillHi();drawNotes()};
+fillHi();drawNotes();
+['sec-notes','sec-scales'].forEach(function(id){var d=$(id),k='gb-'+id;try{var v=localStorage.getItem(k);if(v!==null)d.open=v==='1'}catch(e){}d.ontoggle=function(){try{localStorage.setItem(k,d.open?'1':'0')}catch(e){}}});
+</script>
+</body>
+</html>

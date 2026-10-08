@@ -12,7 +12,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Avenir Next"
 header{position:sticky;top:0;z-index:2;background:var(--bg);padding:12px 14px 8px;border-bottom:1px solid var(--line)}
 .top{display:flex;align-items:baseline;gap:12px;max-width:760px;margin:0 auto}
 h1{margin:0;font-size:1.35rem;letter-spacing:-.01em}
-.top a{margin-left:auto;color:var(--acc);font-size:.9rem}
+.top a{margin-left:auto;color:var(--acc);font-size:.9rem}.top a+a{margin-left:0}
 .top small{color:var(--mute)}
 input{display:block;width:100%;max-width:760px;margin:10px auto 8px;padding:10px 12px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;max-width:760px;margin:0 auto}
@@ -50,7 +50,7 @@ a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,s
 </head>
 <body>
 <header>
-  <div class="top"><h1>Chordbook</h1><small id="count"></small><a id="back" href="../index.html">Back to recipebook</a></div>
+  <div class="top"><h1>Chordbook</h1><small id="count"></small><a href="../scales/index.html">Scales &amp; notes</a><a id="back" href="../index.html">Back to recipebook</a></div>
   <input id="q" type="search" placeholder="Search song or artist" aria-label="Search song or artist">
   <select id="amp" aria-label="Same amp setup"></select>
   <div class="chips" id="chips"></div>
